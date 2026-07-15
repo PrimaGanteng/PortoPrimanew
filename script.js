@@ -153,16 +153,26 @@ const revealItems = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (entry.intersectionRatio > 0) {
         entry.target.classList.add('is-visible');
         revealObserver.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.12, rootMargin: '0px 0px -12% 0px' }
+  { threshold: 0.02, rootMargin: '0px 0px -120px 0px' }
 );
 
 revealItems.forEach((item) => revealObserver.observe(item));
+
+window.addEventListener('load', () => {
+  revealItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      item.classList.add('is-visible');
+      revealObserver.unobserve(item);
+    }
+  });
+});
 
 if (!window.IntersectionObserver) {
   revealItems.forEach((item) => item.classList.add('is-visible'));
