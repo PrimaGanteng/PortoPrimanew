@@ -142,6 +142,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 0;
 }
 
 .hero-visual img {
@@ -152,6 +153,7 @@ h2 {
   object-fit: contain;
   object-position: center;
   border-radius: 24px;
+  transform: translateZ(0);
 }
 
 .section {
@@ -183,6 +185,7 @@ h2 {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
 }
 
 .project-card {
@@ -196,6 +199,9 @@ h2 {
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   box-shadow: var(--shadow);
+  opacity: 1;
+  visibility: visible;
+  min-height: 100%;
 }
 
 .project-card:hover {
@@ -203,12 +209,18 @@ h2 {
   box-shadow: 0 24px 60px rgba(17, 17, 17, 0.1);
 }
 
+.project-card-media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--surface-strong);
+}
+
 .project-card-media img {
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 20px;
   display: block;
 }
 
@@ -351,7 +363,7 @@ h2 {
 
   .hero {
     padding: 28px 0 32px;
-    grid-template-columns: 1fr minmax(180px, 260px);
+    grid-template-columns: 1fr;
     gap: 18px;
     align-items: start;
   }
@@ -373,12 +385,13 @@ h2 {
     border-radius: 24px;
     padding: 14px;
     width: 100%;
-    max-width: 260px;
-    margin-left: auto;
+    max-width: 100%;
+    margin: 0;
   }
 
   .hero-visual img {
     max-height: 280px;
+    width: 100%;
   }
 
   .hero-actions {
@@ -389,6 +402,18 @@ h2 {
   .button {
     width: auto;
     min-width: 160px;
+  }
+
+  .project-card {
+    padding: 16px;
+  }
+
+  .project-card h4 {
+    font-size: 1.1rem;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
   }
 
   .section {
