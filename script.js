@@ -118,7 +118,7 @@ if (projectGrid) {
       (project) => `
         <article class="project-card" role="button" tabindex="0" data-link="${project.link}">
           <div class="project-card-media">
-            <img src="${project.thumbnail}" alt="Thumbnail ${project.title}" loading="lazy" />
+            <img src="${project.thumbnail}" alt="Thumbnail ${project.title}" />
           </div>
           <div class="project-card-body">
             <p class="project-category">${project.category}</p>
